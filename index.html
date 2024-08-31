@@ -51,96 +51,61 @@
   
         <div class="tagname-list">
           <div class="tab-pane active">
-            <div class="tagname-item h1" draggable="true">h1</div>
-            <div class="tagname-item i" draggable="true">i</div>
-            <div class="tagname-item u" draggable="true">u</div>
-            <div class="tagname-item strong" draggable="true">strong</div>
-            <div class="tagname-item em" draggable="true">em</div>
-            <div class="tagname-item del" draggable="true">del</div>
-            <div class="tagname-item s" draggable="true">s</div>
-            <div class="tagname-item ins" draggable="true">ins</div>
-            <div class="tagname-item small" draggable="true">small</div>
-            <div class="tagname-item big" draggable="true">big</div>
-            <div class="tagname-item sub" draggable="true">sub</div>
-            <div class="tagname-item s" draggable="true">s</div>
-            <div class="tagname-item ins" draggable="true">ins</div>
-            <div class="tagname-item small" draggable="true">small</div>
-            <div class="tagname-item big" draggable="true">big</div>
-            <div class="tagname-item sub" draggable="true">sub</div>
+            <div class="tagname-item" draggable="true" data-type="h1">The h1 </div>
+            <div class="tagname-item" draggable="true" data-type="i">the in nghieng</div>
+            <div class="tagname-item" draggable="true" data-type="u">the u</div>
           </div>
-  
+
           <div class="tab-pane">
-            <div class="tagname-item" draggable="true">i</div>
-            <div class="tagname-item" draggable="true">u</div>
-            <div class="tagname-item" draggable="true">strong</div>
-            <div class="tagname-item" draggable="true">em</div>
-            <div class="tagname-item" draggable="true">del</div>
-            <div class="tagname-item" draggable="true">s</div>
-            <div class="tagname-item" draggable="true">ins</div>
-            <div class="tagname-item" draggable="true">small</div>
-            <div class="tagname-item" draggable="true">big</div>
-            <div class="tagname-item" draggable="true">sub</div>
+            <div class="tagname-item" draggable="true" data-type="h1">The h1 </div>
+            <div class="tagname-item" draggable="true" data-type="i">the in nghieng</div>
+            <div class="tagname-item" draggable="true" data-type="u">the u</div>
           </div>
-  
+
           <div class="tab-pane">
-            <div class="tagname-item" draggable="true">u</div>
-            <div class="tagname-item" draggable="true">strong</div>
-            <div class="tagname-item" draggable="true">em</div>
-            <div class="tagname-item" draggable="true">del</div>
-            <div class="tagname-item" draggable="true">s</div>
-            <div class="tagname-item" draggable="true">ins</div>
-            <div class="tagname-item" draggable="true">small</div>
-            <div class="tagname-item" draggable="true">big</div>
-            <div class="tagname-item" draggable="true">sub</div>
+            <div class="tagname-item" draggable="true" data-type="h1">The h1 </div>
+            <div class="tagname-item" draggable="true" data-type="i">the in nghieng</div>
+            <div class="tagname-item" draggable="true" data-type="u">the u</div>
           </div>
-  
+
           <div class="tab-pane">
-            <div class="tagname-item" draggable="true">strong</div>
-            <div class="tagname-item" draggable="true">em</div>
-            <div class="tagname-item" draggable="true">del</div>
-            <div class="tagname-item" draggable="true">s</div>
-            <div class="tagname-item" draggable="true">ins</div>
-            <div class="tagname-item" draggable="true">small</div>
-            <div class="tagname-item" draggable="true">big</div>
-            <div class="tagname-item" draggable="true">sub</div>
+            <div class="tagname-item" draggable="true" data-type="h1">The h1 </div>
+            <div class="tagname-item" draggable="true" data-type="i">the in nghieng</div>
+            <div class="tagname-item" draggable="true" data-type="u">the u</div>
           </div>
         </div>
       </nav>
   
       <div class="box">
+        <!-- box drop -->
         <div class="box__move">
-          <div class="box__move-top">
+          <div class="box__move-top"> 
             <div class="box__wrap">
               <i class="fa-solid fa-arrow-left box__icon box__icon-left"></i>
               <i class="fa-solid fa-arrow-right box__icon box__icon-right"></i>
             </div>
-            <i class="fa-solid fa-trash box__icon box__icon-trash"></i>
+            <i class="fa-solid fa-trash box__icon box__icon-trash" onclick="clearAll()"></i>
+          </div>
+
+          <div class="wrap-list">
           </div>
         </div>
+
+        <!-- btn run -->
+        <button class="btn-run" onclick="btnRun()">Run</button>
+
+        <!-- show program -->
+         <div class="show-program">
+          
+         </div>
+
+
       </div>
     </div>
 
 
 
     <!-- <div class="wrap">
-      <div class="wrap__list">
-        <h2 class="heading">Tags</h2>
-
-        <div class="tab">
-          <span class="tab-item">Format</span>
-          <span class="tab-item">Table</span>
-          <span class="tab-item">Content</span>
-          <span class="tab-item">Embed</span>
-        </div>
-
-        <div class="tab-content">
-          <div class="tab-pane active">
-            <p id="the1" class="wrap__li" draggable="true">The p</p>
-            <p id="the2" class="wrap__li" draggable="true">The h1</p>
-            <p id="the3" class="wrap__li" draggable="true">The span</p>
-          </div>
-        </div>
-      </div>
       <div class="wrap__right">
         <div class="wrap__container">
           <p class="wrap__box-text">Kéo khối vào đây:</p> -->

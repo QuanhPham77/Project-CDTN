@@ -1,88 +1,49 @@
-/*
-const elements = document.querySelectorAll(".wrap__li");
-const container = document.querySelector(".wrap__container");
-
-elements.forEach((element) => {
-  element.addEventListener("dragstart", (e) => {
-    e.dataTransfer.setData("text/plain", e.target.id);
-    e.dataTransfer.setData("text/html", element.innerHTML);
-  });
-});
-
-container.addEventListener("dragover", (e) => {
-  e.preventDefault();
-});
-
-container.addEventListener("drop", (e) => {
-  e.preventDefault();
-
-  // const tagName = e.dataTransfer.getData("text/plain");
-  const content = e.dataTransfer.getData("text/html");
+const $ = document.querySelector.bind(document);
+const $$ = document.querySelectorAll.bind(document);
+let newElement;
+let valueInput;
+let colorValue;
+let contentShow = "";
+//handle drag / drop
+function handleDragDrop() {
+  const elements = $$(".tagname-item");
+  const container = $(".wrap-list");
 
   elements.forEach((element) => {
-    let newElement;
+    element.addEventListener("dragstart", (e) => {
+      e.dataTransfer.setData(
+        "text/plain",
+        e.target.dataset.type + "," + e.target.innerHTML
+      );
 
-    if (newElm.id === "the2") {
-      newElement = document.createElement("h1");
-    }
-
-    newElement.innerHTML = content;
-    container.appendChild(newElement);
+      e.dataTransfer.effectAllowed = "move";
+    });
   });
-  */
 
-// elements.forEach((element, index) => {
-//   if (element.id === e.dataTransfer.getData("text")) {
-//     const clonedElement = element.cloneNode(true); // Sao chép phần tử được kéo
-//     container.appendChild(clonedElement);
-//   }
-// });
-// });
-
-// handle drag / drop
-const elements = document.querySelectorAll(".tagname-item");
-const container = document.querySelector(".box__move");
-
-elements.forEach((element) => {
-  element.addEventListener("dragstart", (e) => {
-    e.dataTransfer.setData("text/plain", e.target.className);
-    e.dataTransfer.setData("text/html", element.innerHTML);
+  container.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = "move";
   });
-});
 
-container.addEventListener("dragover", (e) => {
-  e.preventDefault();
-});
+  container.addEventListener("drop", (e) => {
+    e.preventDefault();
+    let data = e.dataTransfer.getData("text/plain"); // Lấy loại thẻ và nội dung
+    let [type, text] = data.split(",");
+    newElement = document.createElement(type); // Tạo phần tử mới dựa trên loại thẻ
+    newElement.innerHTML = text; // Gán nội dung cho phần tử mới
+    newElement.className = "wrap__row-text";
 
-container.addEventListener("drop", (e) => {
-  e.preventDefault();
-
-  // const tagName = e.dataTransfer.getData("text/plain");
-  const data = e.dataTransfer.getData("text/html");
-  const className = e.dataTransfer.getData("text/plain");
-
-  elements.forEach((element) => {
-    if (element.className === e.dataTransfer.getData("text/plain")) {
-      const secondClass = element.classList[1];
-      const nameCard = document.createElement(`${secondClass}`);
-      nameCard.textContent = `Thẻ ${secondClass}`;
-
-      let card = `<div class="wrap__row">
-                      ${nameCard.innerHTML}
-                      <input type="text" class="wrap__row-content" />
-                      <input type="color" class="wrap__row-color" />
-                    </div>`;
-
-      container.innerHTML = card;
-      console.log(nameCard);
-    }
+    let contentRow = `<div class="wrap__row">
+            ${newElement.outerHTML}
+            <input type="text" class="wrap__row-content" placeholder="Nhập nội dung..." oninput="getValue()"/>
+            <input type="color" class="wrap__row-color" onChange="pickColor()"/>
+          </div>`;
+    container.insertAdjacentHTML("beforeend", contentRow);
   });
-});
+}
 
 // Handle tags
 function handleTags() {
-  const $ = document.querySelector.bind(document);
-  const $$ = document.querySelectorAll.bind(document);
   const tabs = $$(".navbar__item");
   const panes = $$(".tab-pane");
 
@@ -108,7 +69,41 @@ function handleTags() {
   });
 }
 
+// xoa tat ca noi dung
+function clearAll() {
+  const container = $(".wrap-list");
+  if (confirm("Bạn có chắc chắn muốn xóa tất cả?") == true) {
+    container.innerHTML = "";
+    alert("Tất cả nội dung đã được xóa!");
+  } else {
+    alert("May quá còn nguyên!");
+  }
+}
+
+// lay gia tri trong o input
+function getValue() {
+  let input = $(".wrap__row-content");
+  valueInput = input.value;
+
+  return valueInput;
+}
+
+function pickColor() {
+  let color = $(".wrap__row-color");
+  colorValue = color.value;
+
+  return colorValue;
+}
+
+function btnRun(getValue) {
+  const show = $(".show-program");
+  contentShow += `<${newElement.tagName.toLowerCase()} style="color: ${colorValue}">${valueInput}</${newElement.tagName.toLowerCase()}>`;
+  console.log(contentShow);
+  show.innerHTML += contentShow;
+}
+
 function run() {
+  handleDragDrop();
   handleTags();
 }
 
