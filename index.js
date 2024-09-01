@@ -4,9 +4,9 @@ let newElement;
 let valueInput;
 let colorValue;
 let contentShow = "";
+const elements = $$(".tagname-item");
 //handle drag / drop
 function handleDragDrop() {
-  const elements = $$(".tagname-item");
   const container = $(".wrap-list");
 
   elements.forEach((element) => {
@@ -37,6 +37,7 @@ function handleDragDrop() {
             ${newElement.outerHTML}
             <input type="text" class="wrap__row-content" placeholder="Nhập nội dung..." oninput="getValue()"/>
             <input type="color" class="wrap__row-color" onChange="pickColor()"/>
+            <div class="wrap__row-delete" onclick="deleteRow()">X</div>
           </div>`;
     container.insertAdjacentHTML("beforeend", contentRow);
   });
@@ -82,26 +83,34 @@ function clearAll() {
 
 // lay gia tri trong o input
 function getValue() {
-  let input = $(".wrap__row-content");
+  const input = $(".wrap__row-content");
   valueInput = input.value;
 
   return valueInput;
 }
 
 function pickColor() {
-  let color = $(".wrap__row-color");
+  const color = $(".wrap__row-color");
   colorValue = color.value;
 
   return colorValue;
 }
 
-function btnRun(getValue) {
+function btnRun() {
+  const container = $(".wrap-list");
   const show = $(".show-program");
   contentShow += `<${newElement.tagName.toLowerCase()} style="color: ${colorValue}">${valueInput}</${newElement.tagName.toLowerCase()}>`;
   console.log(contentShow);
-  show.innerHTML += contentShow;
+  show.innerHTML = contentShow;
 }
 
+// Delete row
+function deleteRow() {
+  const row = $(".wrap__row");
+  row.remove();
+}
+
+// RUN
 function run() {
   handleDragDrop();
   handleTags();
