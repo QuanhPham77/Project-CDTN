@@ -6,7 +6,13 @@
     <title>Document</title>
 
     <!-- Font awaresome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <!-- Link css -->
     <link rel="stylesheet" href="./assets/css/styles.css" />
   </head>
@@ -33,90 +39,110 @@
           <li class="navbar__item active">
             <a href="#!" class="navbar__link">Format</a>
           </li>
-  
+
           <li class="navbar__item">
             <a href="#!" class="navbar__link">Table</a>
           </li>
-  
+
           <li class="navbar__item">
             <a href="#!" class="navbar__link">Content</a>
           </li>
-  
+
           <li class="navbar__item">
             <a href="#!" class="navbar__link">Embed</a>
           </li>
           <div class="line"></div>
         </ul>
-  
+
         <div class="tagname-list">
           <div class="tab-pane active">
-            <div class="tagname-item" draggable="true" data-type="h1">The h1 </div>
-            <div class="tagname-item" draggable="true" data-type="i">the in nghieng</div>
+            <div class="tagname-item" draggable="true" data-type="h1">
+              &lt;h1&gt;
+            </div>
+            <div class="tagname-item" draggable="true" data-type="i">
+              &lt;i&gt;
+            </div>
+            <div class="tagname-item" draggable="true" data-type="u">
+              &lt;u&gt;
+            </div>
+            <div class="tagname-item" draggable="true" data-type="p">
+              &lt;p&gt;
+            </div>
+            <div class="tagname-item" draggable="true" data-type="b">
+              &lt;b&gt;
+            </div>
+            <div class="tagname-item" draggable="true" data-type="strong">
+              &lt;strong&gt;
+            </div>
+            <div class="tagname-item" draggable="true" data-type="em">
+              &lt;em&gt;
+            </div>
+            <div class="tagname-item" draggable="true" data-type="s">
+              &lt;s&gt;
+            </div>
+            <div class="tagname-item" draggable="true" data-type="blockquote">
+              &lt;blockquote&gt;
+            </div>
+          </div>
+
+          <div class="tab-pane">
+            <div class="tagname-item" draggable="true" data-type="h1">
+              The h1
+            </div>
+            <div class="tagname-item" draggable="true" data-type="i">
+              the in nghieng
+            </div>
             <div class="tagname-item" draggable="true" data-type="u">the u</div>
           </div>
 
           <div class="tab-pane">
-            <div class="tagname-item" draggable="true" data-type="h1">The h1 </div>
-            <div class="tagname-item" draggable="true" data-type="i">the in nghieng</div>
+            <div class="tagname-item" draggable="true" data-type="h1">
+              The h1
+            </div>
+            <div class="tagname-item" draggable="true" data-type="i">
+              the in nghieng
+            </div>
             <div class="tagname-item" draggable="true" data-type="u">the u</div>
           </div>
 
           <div class="tab-pane">
-            <div class="tagname-item" draggable="true" data-type="h1">The h1 </div>
-            <div class="tagname-item" draggable="true" data-type="i">the in nghieng</div>
-            <div class="tagname-item" draggable="true" data-type="u">the u</div>
-          </div>
-
-          <div class="tab-pane">
-            <div class="tagname-item" draggable="true" data-type="h1">The h1 </div>
-            <div class="tagname-item" draggable="true" data-type="i">the in nghieng</div>
+            <div class="tagname-item" draggable="true" data-type="h1">
+              The h1
+            </div>
+            <div class="tagname-item" draggable="true" data-type="i">
+              the in nghieng
+            </div>
             <div class="tagname-item" draggable="true" data-type="u">the u</div>
           </div>
         </div>
       </nav>
-  
+
       <div class="box">
         <!-- box drop -->
         <div class="box__move">
-          <div class="box__move-top"> 
+          <div class="box__move-top">
             <div class="box__wrap">
               <i class="fa-solid fa-arrow-left box__icon box__icon-left"></i>
               <i class="fa-solid fa-arrow-right box__icon box__icon-right"></i>
             </div>
-            <i class="fa-solid fa-trash box__icon box__icon-trash" onclick="clearAll()"></i>
+            <i
+              class="fa-solid fa-trash box__icon box__icon-trash"
+              onclick="clearAll()"
+            ></i>
           </div>
 
-          <div class="wrap-list">
-          </div>
+          <div class="wrap-list"></div>
         </div>
 
         <!-- btn run -->
         <button class="btn-run" onclick="btnRun()">Run</button>
 
         <!-- show program -->
-         <div class="show-program">
-         </div>
-
-
+        <div class="show-program"></div>
       </div>
     </div>
 
-
-
-    <!-- <div class="wrap">
-      <div class="wrap__right">
-        <div class="wrap__container">
-          <p class="wrap__box-text">Kéo khối vào đây:</p> -->
-
-          <!-- <div class="wrap__row">
-            <span class="wrap__row-text">Thẻ h1</span>
-            <input type="text" class="wrap__row-content" />
-            <input type="color" class="wrap__row-color" />
-          </div> -->
-        </div>
-      </div>
-    </div> 
-
-    <script src="./index.js"></script>
+    <script src="./handleFormat.js"></script>
+    <script src="./handleTable.js"></script>
   </body>
 </html>
