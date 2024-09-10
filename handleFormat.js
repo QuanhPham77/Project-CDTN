@@ -1,82 +1,111 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
-let rowInfo = {};
+const elements = $$(".tagname-item");
+const container = $(".wrap-list");
+let tag, text;
+let currentId = 0;
 
 // drag / drop
 function handleDragDrop() {
-  const elements = $$(".tagname-item");
-  const container = $(".wrap-list");
-
   // dragstart
   elements.forEach((element) => {
     element.addEventListener("dragstart", (e) => {
       e.dataTransfer.setData(
-        "text/plain",
+        "text",
         e.target.dataset.type + "," + e.target.innerHTML
       );
-      e.dataTransfer.effectAllowed = "move";
     });
   });
 
   // dragover
   container.addEventListener("dragover", (e) => {
     e.preventDefault();
-    e.dataTransfer.dropEffect = "move";
   });
 
-  // Drop
+  // drop
   container.addEventListener("drop", (e) => {
     e.preventDefault();
 
+    // hien thanh input khi hoan tat drop
     const data = e.dataTransfer.getData("text");
     [tag, text] = data.split(",");
 
-    let contentRow = `<div class="wrap__row" data-index="">
+    let contentRow = `<div class="wrap__row" data-id="${currentId}">
             <${tag} class="wrap__row-text">${text}</${tag}>
-            <input type="text" class="wrap__row-content" placeholder="Nhập nội dung..."/>
-            <input type="color" class="wrap__row-color" />
-            <div class="wrap__row-delete" onclick="deleteRow(this)">X</div>
+            <input type="text" class="wrap__row-content" data-id="${currentId}" placeholder="Nhập nội dung..."/>
+            <input type="color" class="wrap__row-color" data-id="${currentId}" />
+            <div class="wrap__row-delete" data-id="${currentId}" onclick="deleteRow(this)">X</div>
           </div>`;
 
     container.insertAdjacentHTML("beforeend", contentRow);
 
-    // Lưu dữ liệu
+    // Lưu noi dung cua row vao local
     let rows = $$(".wrap__row");
+    let rowInfo = {
+      id: currentId++,
+      tag: tag,
+      content: "",
+      color: "#000",
+    };
 
-    let currentId = 0;
+    let arrRowInfo = JSON.parse(localStorage.getItem("arrRowInfo")) || [];
+    arrRowInfo.push(rowInfo);
+    localStorage.setItem("arrRowInfo", JSON.stringify(arrRowInfo));
+
     rows.forEach((row) => {
       let inputText = row.querySelector(".wrap__row-content");
       let inputColor = row.querySelector(".wrap__row-color");
-      rowInfo = {
-        id: currentId++,
-        tag: tag,
-        text: text.trim(),
-        content: "",
-        color: "",
-      };
 
+      // Lưu text vào local
       inputText.addEventListener("change", () => {
-        rowInfo.content = inputText.value;
-        if (rowInfo.content && rowInfo.color) {
-          storeRowInfo(rowInfo);
-        }
-      });
-      inputColor.addEventListener("change", () => {
-        rowInfo.color = inputColor.value;
-        if (rowInfo.content && rowInfo.color) {
-          storeRowInfo(rowInfo);
+        const textId = inputText.dataset.id;
+        const textValue = inputText.value;
+
+        for (let i = 0; i < arrRowInfo.length; i++) {
+          if (textId == arrRowInfo[i].id) {
+            arrRowInfo[i].content = textValue;
+            localStorage.setItem("arrRowInfo", JSON.stringify(arrRowInfo));
+          }
         }
       });
 
-      function storeRowInfo(rowInfo) {
-        rowInfo.content = inputText.value;
-        rowInfo.color = inputColor.value;
-        let data = JSON.parse(localStorage.getItem("rowInfos")) || [];
-        data.push(rowInfo);
-        localStorage.setItem("rowInfos", JSON.stringify(data));
-      }
+      // Lưu color vào local
+      inputColor.addEventListener("change", () => {
+        const colorId = inputColor.dataset.id;
+        const colorValue = inputColor.value;
+
+        for (let i = 0; i < arrRowInfo.length; i++) {
+          if (colorId == arrRowInfo[i].id) {
+            arrRowInfo[i].color = colorValue;
+            localStorage.setItem("arrRowInfo", JSON.stringify(arrRowInfo));
+          }
+        }
+      });
     });
   });
+}
+
+// // Delete row
+function deleteRow(element) {
+  const rowId = element.parentNode.dataset.id;
+  const arrRowInfo = JSON.parse(localStorage.getItem("arrRowInfo")) || [];
+  for (let i = 0; i < arrRowInfo.length; i++) {
+    if (arrRowInfo[i].id == rowId) {
+      arrRowInfo.splice(i, 1);
+      localStorage.setItem("arrRowInfo", JSON.stringify(arrRowInfo));
+    }
+  }
+  element.parentNode.remove();
+}
+
+function clearAll() {
+  if (confirm("Bạn muốn xóa tất cả nội dung?")) {
+    container.innerHTML = "";
+    localStorage.removeItem("arrRowInfo");
+    alert("Tat ca noi dung da xoa!");
+  } else {
+    alert("Thao tac da bi huy bo!");
+  }
 }
 
 // Handle tags
@@ -106,39 +135,29 @@ function handleTags() {
   });
 }
 
-// xoa tat ca noi dung
-function clearAll() {
-  const container = $(".wrap-list");
-  if (confirm("Bạn có chắc chắn muốn xóa tất cả?") == true) {
-    container.innerHTML = "";
-    localStorage.removeItem("rowInfos");
-    alert("Tất cả nội dung đã được xóa!");
-  } else {
-    alert("May quá còn nguyên!");
-  }
-}
-
-// Delete row
-function deleteRow(element) {
-  let rows = $$(".wrap__row");
-  const data = JSON.parse(localStorage.getItem("rowInfos")) || [];
-  for (let i = 0; i < rows.length; i++) {
-    if (data[i].id === rowInfo.id) {
-      data.splice(i - 1, 1);
-      localStorage.setItem("rowInfos", JSON.stringify(data));
-    }
-  }
-  element.parentNode.remove();
-}
-
-// Handle btn RUN
+// handle showprogram
 function btnRun() {
+  // render program
   const showProgram = $(".show-program");
-  const data = JSON.parse(localStorage.getItem("rowInfos")) || [];
-  data.forEach((row) => {
+  const rows = JSON.parse(localStorage.getItem("arrRowInfo"));
+  let arrRowShow = "";
+  console.log(rows);
+  rows.forEach((row) => {
     const rowShow = `<${row.tag} style="color: ${row.color}">${row.content}</${row.tag}> <br/>`;
-    showProgram.innerHTML += rowShow;
+    arrRowShow += rowShow;
   });
+
+  showProgram.innerHTML = arrRowShow;
+
+  // render code
+  const code = $(".render__code");
+  let codeShow = "";
+
+  rows.forEach((row) => {
+    codeShow += `<${row.tag} style="color:${row.color}">${row.content}</${row.tag}>`;
+  });
+  code.textContent = codeShow;
+  Prism.highlightElement(code);
 }
 
 // RUN
@@ -152,4 +171,5 @@ renders();
 //xoa DL trong local khi load lai trang
 window.onload = function () {
   localStorage.clear();
+  currentId = 0;
 };

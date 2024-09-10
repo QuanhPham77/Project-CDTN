@@ -283,3 +283,12 @@ li {
   border-radius: 20px;
   overflow: auto;
 }
+
+/* Show code */
+.show-code {
+  height: 200px;
+}
+
+.language-html {
+  height: 200px;
+}

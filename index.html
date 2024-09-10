@@ -15,6 +15,14 @@
     />
     <!-- Link css -->
     <link rel="stylesheet" href="./assets/css/styles.css" />
+    <!-- Prism.js CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-a11y-dark.min.css"
+      integrity="sha512-bd1K4DEquIavX49RSZHIE0Ye6RFOVlGLhtGow9KDbLYqOd/ufhshkP0GoJoVR1jqj7FmOffvVIKuq1tcXlN9ZA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
     <header>
@@ -139,10 +147,17 @@
 
         <!-- show program -->
         <div class="show-program"></div>
+
+        <!-- show code -->
+        <div class="show-code">
+          <pre><code class="render__code language-html"></code></pre>
+        </div>
       </div>
     </div>
 
     <script src="./handleFormat.js"></script>
     <script src="./handleTable.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
   </body>
 </html>
