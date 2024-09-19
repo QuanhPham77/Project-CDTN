@@ -1,12 +1,13 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
-const elements = $$(".tagname-item");
+const elements = $$(".tagname-item.format");
 const container = $(".wrap-list");
-let tag, text;
+let tag,
+  text = "";
 let currentId = 0;
 
-// drag / drop
-function handleDragDrop() {
+// Handle Format
+function handleFormat() {
   // dragstart
   elements.forEach((element) => {
     element.addEventListener("dragstart", (e) => {
@@ -30,7 +31,7 @@ function handleDragDrop() {
     const data = e.dataTransfer.getData("text");
     [tag, text] = data.split(",");
 
-    let contentRow = `<div class="wrap__row" data-id="${currentId}">
+    const contentRow = `<div class="wrap__row" data-id="${currentId}">
             <${tag} class="wrap__row-text">${text}</${tag}>
             <input type="text" class="wrap__row-content" data-id="${currentId}" placeholder="Nhập nội dung..."/>
             <input type="color" class="wrap__row-color" data-id="${currentId}" />
@@ -162,7 +163,9 @@ function btnRun() {
 
 // RUN
 function renders() {
-  handleDragDrop();
+  if (elements) {
+    handleFormat();
+  }
   handleTags();
 }
 

@@ -63,54 +63,57 @@
         </ul>
 
         <div class="tagname-list">
+          <!-- Thẻ Format -->
           <div class="tab-pane active">
-            <div class="tagname-item" draggable="true" data-type="b">
+            <div class="tagname-item format" draggable="true" data-type="b">
               &lt;b&gt;
             </div>
-            <div class="tagname-item" draggable="true" data-type="i">
+            <div class="tagname-item format" draggable="true" data-type="i">
               &lt;i&gt;
             </div>
-            <div class="tagname-item" draggable="true" data-type="u">
+            <div class="tagname-item format" draggable="true" data-type="u">
               &lt;u&gt;
             </div>
-            <div class="tagname-item" draggable="true" data-type="big">
+            <div class="tagname-item format" draggable="true" data-type="big">
               &lt;big&gt;
             </div>
-            <div class="tagname-item" draggable="true" data-type="small">
+            <div class="tagname-item format" draggable="true" data-type="small">
               &lt;small&gt;
             </div>
-            <div class="tagname-item" draggable="true" data-type="sup">
+            <div class="tagname-item format" draggable="true" data-type="sup">
               &lt;sup&gt;
             </div>
-            <div class="tagname-item" draggable="true" data-type="sub">
+            <div class="tagname-item format" draggable="true" data-type="sub">
               &lt;sub&gt;
             </div>
-            <div class="tagname-item" draggable="true" data-type="strong">
+            <div
+              class="tagname-item format"
+              draggable="true"
+              data-type="strong"
+            >
               &lt;strong&gt;
             </div>
-            <div class="tagname-item" draggable="true" data-type="em">
+            <div class="tagname-item format" draggable="true" data-type="em">
               &lt;em&gt;
             </div>
           </div>
 
+          <!-- Thẻ Table -->
           <div class="tab-pane">
-            <div class="tagname-item" draggable="true" data-type="h1">
-              The h1
+            <div class="tagname-item" draggable="true" data-type="table">
+              &lt;table&gt;
             </div>
-            <div class="tagname-item" draggable="true" data-type="i">
-              the in nghieng
-            </div>
-            <div class="tagname-item" draggable="true" data-type="u">the u</div>
           </div>
 
+          <!--Thẻ Image -->
           <div class="tab-pane">
-            <div class="tagname-item" draggable="true" data-type="h1">
-              The h1
+            <div
+              class="tagname-item tagname-item-img"
+              draggable="true"
+              data-type="img"
+            >
+              &lt;img&gt;
             </div>
-            <div class="tagname-item" draggable="true" data-type="i">
-              the in nghieng
-            </div>
-            <div class="tagname-item" draggable="true" data-type="u">the u</div>
           </div>
 
           <div class="tab-pane">
@@ -129,14 +132,7 @@
         <!-- box drop -->
         <div class="box__move">
           <div class="box__move-top">
-            <div class="box__wrap">
-              <i class="fa-solid fa-arrow-left box__icon box__icon-left"></i>
-              <i class="fa-solid fa-arrow-right box__icon box__icon-right"></i>
-            </div>
-            <i
-              class="fa-solid fa-trash box__icon box__icon-trash"
-              onclick="clearAll()"
-            ></i>
+            <i class="fa-solid fa-trash box__icon" onclick="clearAll()"></i>
           </div>
 
           <div class="wrap-list"></div>
@@ -157,6 +153,7 @@
 
     <script src="./handleFormat.js"></script>
     <script src="./handleTable.js"></script>
+    <script src="./handleImage.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
   </body>
