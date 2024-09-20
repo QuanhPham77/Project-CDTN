@@ -103,9 +103,9 @@ function clearAll() {
   if (confirm("Bạn muốn xóa tất cả nội dung?")) {
     container.innerHTML = "";
     localStorage.removeItem("arrRowInfo");
-    alert("Tat ca noi dung da xoa!");
+    alert("Tất cả nội dung đã được xóa!");
   } else {
-    alert("Thao tac da bi huy bo!");
+    alert("Thao tác đã bị hủy bỏ!");
   }
 }
 
@@ -155,7 +155,7 @@ function btnRun() {
   let codeShow = "";
 
   rows.forEach((row) => {
-    codeShow += `<${row.tag} style="color:${row.color}">${row.content}</${row.tag}>`;
+    codeShow += `<${row.tag} style="color:${row.color}">${row.content}</${row.tag}>\n`;
   });
   code.textContent = codeShow;
   Prism.highlightElement(code);
