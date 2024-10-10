@@ -1,61 +1,82 @@
-// const element = $(".tagname-item.tagname-item-img");
+let countImg = 0;
+const rows = $$(".wrap__row");
 
-// function handleImage() {
-//   element.addEventListener("dragstart", (e) => {
-//     e.dataTransfer.setData("text", e.target.src);
-//   });
+function handleImage(e) {
+  const contentRow = `
+      <div class="wrap__row" data-id="${countImg}">
+        <p class="wrap__row-img-text">&lt;img&gt;</p>
+        <div class="wrap__row-mid">
+            <input type="file" accept="image/*" class="wrap__row-file" data-id="${countImg}"/>
 
-//   container.addEventListener("dragover", (e) => {
-//     e.preventDefault();
-//   });
+            <label>Width(px): </label>
+            <input type="number" class="wrap__row-input wrap__row-width" data-id="${countImg}"/>
 
-//   container.addEventListener("drop", (e) => {
-//     e.preventDefault();
-//     const srcImage = e.dataTransfer.getData("text");
+            <label>Height(px): </label>
+            <input type="number" class="wrap__row-input wrap__row-height" data-id="${countImg}"/>
+        </div>
 
-//     const rowImg = `
-//                 <div class="image-upload-container">
-//                     <input type="button" class="fileNameBtn" value="Choose File">
-//                     <label>Width: <input type="number" class="imgWidth" value="100"></label>
-//                     <label>Height: <input type="number" class="imgHeight" value="100"></label>
-//                     <input type="file" accept="image/*" class="imageInput" style="display:none;">
+        <div class="wrap__row-delete" onclick="deleteRow(this)" data-id="${countImg}">X</div>
+      </div>`;
+  container.insertAdjacentHTML("beforeend", contentRow);
 
-//                 </div>
-//             `;
-//     container.insertAdjacentHTML("beforeend", rowImg);
+  let rows = $$(".wrap__row");
+  let rowImg = {
+    id: countImg++,
+    width: 100,
+    height: 0,
+    urlImage: "",
+  };
 
-//     // Sự kiện khi người dùng chọn file ảnh
-//     const imageInput = container.querySelector(".imageInput");
-//     const fileNameBtn = container.querySelector(".fileNameBtn");
-//     // const imagePreview = container.querySelector('.imagePreview');
+  let arrRowImgs = JSON.parse(localStorage.getItem("arrRowImgs")) || [];
+  arrRowImgs.push(rowImg);
+  localStorage.setItem("arrRowImgs", JSON.stringify(arrRowImgs));
 
-//     // Khi nhấn vào nút để chọn file ảnh
-//     fileNameBtn.addEventListener("click", function () {
-//       imageInput.click();
-//     });
+  rows.forEach((row) => {
+    let inputWidth = row.querySelector(".wrap__row-width");
+    let inputHeight = row.querySelector(".wrap__row-height");
+    let inputPath = row.querySelector(".wrap__row-file");
 
-//     // Khi người dùng chọn file ảnh
-//     imageInput.addEventListener("change", function () {
-//       const file = this.files[0];
-//       if (file) {
-//         fileNameBtn.value = file.name; // Hiển thị tên file thay vì "Choose File"
-//         // const fileURL = URL.createObjectURL(file);
-//         // imagePreview.src = fileURL;
-//         updateCode();
-//       }
-//     });
+    // Lưu width vào local
+    inputWidth.addEventListener("input", () => {
+      const widthId = inputWidth.dataset.id;
+      const widthValue = inputWidth.value;
 
-//     // Cập nhật khi thay đổi kích thước ảnh
-//     const widthInput = container.querySelector(".imgWidth");
-//     const heightInput = container.querySelector(".imgHeight");
-//     [widthInput, heightInput].forEach((input) => {
-//       input.addEventListener("input", function () {
-//         updateCode();
-//       });
-//     });
+      for (let i = 0; i < arrRowImgs.length; i++) {
+        if (widthId == arrRowImgs[i].id) {
+          arrRowImgs[i].width = widthValue;
+          localStorage.setItem("arrRowImgs", JSON.stringify(arrRowImgs));
+        }
+      }
+    });
 
-//     updateCode();
-//   });
-// }
+    // luu height vao local
+    inputHeight.addEventListener("input", () => {
+      const heightId = inputHeight.dataset.id;
+      const heightValue = inputHeight.value;
 
-// handleImage();
+      for (let i = 0; i < arrRowImgs.length; i++) {
+        if (heightId == arrRowImgs[i].id) {
+          arrRowImgs[i].height = heightValue;
+          localStorage.setItem("arrRowImgs", JSON.stringify(arrRowImgs));
+        }
+      }
+    });
+
+    // luu path img vao local
+    inputPath.addEventListener("change", () => {
+      const pathId = inputPath.dataset.id;
+      const file = inputPath.files[0];
+
+      if (file) {
+        const imgURL = URL.createObjectURL(file);
+
+        for (let i = 0; i < arrRowImgs.length; i++) {
+          if (pathId == arrRowImgs[i].id) {
+            arrRowImgs[i].urlImage = imgURL;
+            localStorage.setItem("arrRowImgs", JSON.stringify(arrRowImgs));
+          }
+        }
+      }
+    });
+  });
+}

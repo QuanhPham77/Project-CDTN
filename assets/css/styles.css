@@ -1,11 +1,11 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
   font-size: 62.5%;
-  margin: 0;
-  padding: 0;
 }
 
 :root {
@@ -49,18 +49,17 @@ li {
 
 .container {
   display: flex;
-  padding: 14px 12px;
-  background-color: #f4f0ea;
+  padding: 14px 32px;
 }
 
 /* navbar */
 .navbar {
   text-align: center;
   width: 400px;
-  height: 870px;
+  height: 700px;
   padding: 16px 32px;
   background-color: var(--bgr-color);
-  border-radius: 36px;
+  border-radius: 30px;
 }
 
 .navbar__heading {
@@ -103,6 +102,16 @@ li {
 }
 
 .navbar__item:hover .navbar__link {
+  color: #fff;
+}
+
+.navbar__item.active {
+  background-color: var(--primary-color);
+  opacity: 1;
+  border-radius: 4px;
+}
+
+.navbar__item.active .navbar__link {
   color: #fff;
 }
 
@@ -152,7 +161,6 @@ li {
 }
 
 .box__move {
-  /* width: 100%; */
   height: 350px;
   background-color: var(--bgr-color);
   padding: 20px 32px;
@@ -193,6 +201,8 @@ li {
   display: flex;
   align-items: center;
   position: relative;
+  padding-left: 32px;
+  width: 100%;
 }
 
 .wrap__row-text,
@@ -201,14 +211,28 @@ li {
   padding: 18px 0;
 }
 
-.wrap__row-text {
-  padding-left: 32px;
+.wrap__row-img-text {
+  width: 20%;
 }
 
-.wrap__row-content {
+.wrap__row-content,
+.wrap__row-input {
   border-radius: 12px;
   border: none;
   padding: 8px 12px;
+}
+
+.wrap__row-mid {
+  display: flex;
+  align-items: center;
+  width: 33.33%;
+  padding: 12px 0;
+  /* margin-left: 250px; */
+}
+
+.wrap__row-input {
+  margin: 0 32px 0 12px;
+  width: 100px;
 }
 
 .wrap__row-color {
@@ -240,7 +264,7 @@ li {
 .btn-run {
   width: 130px;
   height: 30px;
-  margin: 12px auto;
+  margin: 20px auto 12px auto;
   border: none;
   border-radius: 10px;
   background-color: #eeb37cd1;
@@ -256,25 +280,22 @@ li {
 /* show program */
 .show-program {
   margin-top: 8px;
-  width: 49%;
-  height: 466px;
+  margin: 0 32px;
+  width: 100wh;
+  height: 470px;
   background-color: var(--bgr-color);
   padding: 20px 32px;
-  border-radius: 5px;
+  border-radius: 20px;
   overflow: auto;
 }
 
 /* Show code */
-.box-show {
-  display: flex;
-  justify-content: space-between;
-}
-
-.show-code {
-  width: 49%;
-}
-
 .language-html {
-  margin: 0;
-  height: 466px;
+  width: 100%;
+  height: 280px;
 }
+
+/* .show-program {
+  border-radius: 20px;
+  width: 100%;
+} */

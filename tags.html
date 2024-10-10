@@ -35,7 +35,7 @@
               src="./assets/imgs/logo_hnue.jpeg"
               alt="logo_hnue"
             />
-            <span>Team</span>
+            <span>CODE LEARNING</span>
           </div>
         </a>
 
@@ -43,7 +43,7 @@
           <a href="#!" class="header__list-link">
             <i class="fa-solid fa-house header__list-icon"></i>
           </a>
-          <a href="#!" class="header__list-link"> Tags </a>
+          <a href="./tags.html" class="header__list-link"> Tags </a>
           <a href="#!" class="header__list-link"> Contact </a>
         </div>
       </div>
@@ -51,7 +51,7 @@
 
     <div class="container">
       <nav class="navbar">
-        <div class="navbar__heading">Tags</div>
+        <div class="navbar__heading">TAGS</div>
         <ul class="navbar__list">
           <li class="navbar__item active">
             <a href="#!" class="navbar__link">Format</a>
@@ -105,7 +105,7 @@
           </div>
 
           <!-- Thẻ Table -->
-          <div class="tab-pane">
+          <div d="table" class="tab-pane">
             <div class="tagname-item" draggable="true" data-type="table">
               &lt;table&gt;
             </div>
@@ -137,20 +137,17 @@
         <!-- btn run -->
         <button class="btn-run" onclick="btnRun()">Run</button>
 
-        <div class="box-show">
-          <!-- show program -->
-          <div class="show-program"></div>
-
-          <!-- show code -->
-          <div class="show-code">
-            <pre><code class="render__code language-html"></code></pre>
-          </div>
+        <!-- show code -->
+        <div class="show-code">
+          <pre><code class="render__code language-html"></code></pre>
         </div>
       </div>
     </div>
+    <!-- show program -->
+    <div class="show-program"></div>
 
+    <script src="./index.js"></script>
     <script src="./handleFormat.js"></script>
-    <script src="./handleTable.js"></script>
     <script src="./handleImage.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
