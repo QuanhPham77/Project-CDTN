@@ -144,6 +144,7 @@
   margin: 10px 0;
   border-radius: 10px;
   display: flex;
+  justify-content: space-around;
   align-items: center;
   position: relative;
   padding-left: 32px;
@@ -170,11 +171,27 @@
   padding: 8px 12px;
 }
 
-.wrap__row-mid {
-  display: flex;
-  align-items: center;
-  position: absolute;
-  right: 250px;
+@media (max-width: 1715px) {
+  .wrap__row-mid {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 130px;
+  }
+
+  .wrap__row-file {
+    width: 250px;
+    margin-right: 24px;
+  }
+}
+
+@media (min-width: 1716px) {
+  .wrap__row-mid {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 200px;
+  }
 }
 
 .wrap__row-input {
