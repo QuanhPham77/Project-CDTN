@@ -2,6 +2,7 @@ const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 const elementsFormat = $$(".tagname-item.format");
 const elementImage = $(".tagname-item.tagname-item-img");
+const elementTable = $(".tagname-item.tagname-item-table");
 const container = $(".wrap-list");
 const code = $(".render__code");
 const showProgram = $(".show-program");
@@ -21,6 +22,11 @@ elementImage.addEventListener("dragstart", (e) => {
   e.dataTransfer.setData("type", "image");
 });
 
+// event dragstart cho table
+elementTable.addEventListener("dragstart", (e) => {
+  e.dataTransfer.setData("type", "table");
+});
+
 // drag over
 container.addEventListener("dragover", (e) => {
   e.preventDefault();
@@ -36,6 +42,8 @@ container.addEventListener("drop", (e) => {
     handleFormat(e);
   } else if (type == "image") {
     handleImage(e);
+  } else if (type == "table") {
+    handleTable(e);
   }
 });
 
@@ -74,7 +82,6 @@ handleTags();
 
 // handle showprogram
 function btnRun() {
-  // render program
   const rows = JSON.parse(localStorage.getItem("arrRowInfo"));
   let arrRowShow = "";
 
@@ -94,6 +101,7 @@ function btnRun() {
     code.textContent = codeShow;
     Prism.highlightElement(code);
   } else if (type == "image") {
+    // render program
     let rowsImgs = JSON.parse(localStorage.getItem("arrRowImgs"));
 
     rowsImgs.forEach((row) => {
@@ -110,6 +118,28 @@ function btnRun() {
     });
     code.textContent = codeShow;
     Prism.highlightElement(code);
+  } else if (type == "table") {
+    const elements = container.querySelectorAll(".element");
+    let resultHTML = "";
+
+    elements.forEach((el) => {
+      const table = el.querySelector("table");
+      let tableResult = `<table border="1" style="table-layout: fixed; width: 100%;margin-bottom: 20px;">\n`;
+
+      for (let i = 0; i < table.rows.length; i++) {
+        tableResult += "  <tr>\n";
+        for (let j = 0; j < table.rows[i].cells.length; j++) {
+          const cellInput = table.rows[i].cells[j].querySelector("input");
+          const cellContent = cellInput ? cellInput.value : ""; // Lấy giá trị từ ô nhập liệu và đưa vào bảng kết quả
+          tableResult += `    <td style="width: ${cellInput.offsetWidth}px; height: ${cellInput.offsetHeight}px;">${cellContent}</td>\n`; // Đảm bảo giữ nguyên kích thước ô
+        }
+        tableResult += "  </tr>\n";
+      }
+      tableResult += "</table>\n";
+      resultHTML += tableResult;
+    });
+
+    showProgram.innerHTML = resultHTML;
   }
 }
 
@@ -117,7 +147,7 @@ function btnRun() {
 function deleteRow(element) {
   const rowId = element.parentNode.dataset.id;
   const arrRowInfo = JSON.parse(localStorage.getItem("arrRowInfo")) || [];
-  const rowsImgs = JSON.parse(localStorage.getItem("arrRowImgs"));
+  const rowsImgs = JSON.parse(localStorage.getItem("arrRowImgs")) || [];
 
   // format
   for (let i = 0; i < arrRowInfo.length; i++) {

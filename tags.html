@@ -14,6 +14,7 @@
       referrerpolicy="no-referrer"
     />
     <!-- Link css -->
+    <link rel="stylesheet" href="./assets/css/globs.css" />
     <link rel="stylesheet" href="./assets/css/header.css" />
     <link rel="stylesheet" href="./assets/css/styles.css" />
     <!-- Prism.js CSS -->
@@ -43,7 +44,7 @@
           <a href="./index.html" class="header__list-link">
             <i class="fa-solid fa-house header__list-icon"></i>
           </a>
-          <a href="./tags.html" class="header__list-link"> Tags </a>
+          <a href="./tags.html" class="header__list-link"> Drag&Drop </a>
           <a href="./contact.html" class="header__list-link"> Contact </a>
         </div>
       </div>
@@ -106,7 +107,11 @@
 
           <!-- Thẻ Table -->
           <div d="table" class="tab-pane">
-            <div class="tagname-item" draggable="true" data-type="table">
+            <div
+              class="tagname-item tagname-item-table"
+              draggable="true"
+              data-type="table"
+            >
               &lt;table&gt;
             </div>
           </div>
@@ -149,6 +154,7 @@
     <script src="./index.js"></script>
     <script src="./handleFormat.js"></script>
     <script src="./handleImage.js"></script>
+    <script src="./handleTable.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
   </body>

@@ -1,0 +1,236 @@
+.container {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.logo h1 {
+  font-size: 24px;
+  color: #ff8a00;
+  margin-left: 10px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li {
+  margin-left: 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #ff8a00;
+  font-weight: bold;
+}
+
+.hero {
+  background: url("../imgs/6-1.png") no-repeat center center/cover;
+  height: 820px;
+  text-align: center;
+  padding: 100px;
+  background-color: #fff7e6;
+}
+
+.hero h2 {
+  color: #ff8a00;
+  font-size: 50px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.hero h3 {
+  font-size: 20px;
+  /* font-weight: 400; */
+  line-height: 1.67;
+  margin: 10px 0;
+}
+
+.hero p {
+  max-width: 650px;
+  margin: 20px auto;
+  font-size: 18px;
+}
+
+.btn-drag {
+  display: block;
+  line-height: 50px;
+  width: 130px;
+  height: 50px;
+  margin: 20px auto 12px auto;
+  border: none;
+  border-radius: 30px;
+  background-color: var(--primary-color);
+  color: #fff;
+  opacity: 1;
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+
+.btn-drag:hover {
+  opacity: 0.7;
+}
+
+.about {
+  height: 400px;
+  text-align: center;
+  padding: 100px 0 50px 0;
+  background-color: #ffe9c7;
+}
+
+.about h2 {
+  color: #ff8a00;
+  font-size: 50px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+.about h3 {
+  font-size: 20px;
+  line-height: 1.67;
+  margin: 10px 0;
+}
+
+.about p {
+  max-width: 700px;
+  margin: 20px auto;
+  font-size: 18px;
+}
+
+.features {
+  display: flex;
+  justify-content: space-around;
+  background-color: #ffe9c7;
+  padding-bottom: 100px;
+}
+
+.feature-item {
+  width: 300px;
+  text-align: center;
+}
+
+.feature-item img {
+  width: 300px; /* Đường kính hình tròn */
+  height: 300px; /* Đường kính hình tròn */
+  background-color: #f0c8a2;
+  border-radius: 50%; /* Tạo hình tròn */
+  object-fit: cover;
+}
+
+.feature-item h3 {
+  margin-top: 12px;
+  color: #ff8a00;
+  font-size: 20px;
+}
+
+.feature-item p {
+  font-size: 16px;
+}
+
+.circle {
+  width: 300px; /* Đường kính hình tròn */
+  height: 300px; /* Đường kính hình tròn */
+  background-color: #f0c8a2;
+  padding: 15px;
+  overflow: hidden; /* Ẩn phần ảnh vượt ra ngoài hình tròn */
+  border-radius: 50%; /* Tạo hình tròn */
+}
+.circle img {
+  width: 200px; /* Chiều rộng ảnh bằng 100% hình tròn */
+  height: auto; /* Chiều cao tự động để giữ tỷ lệ */
+}
+
+/* Section CTA */
+.cta {
+  background: url("../imgs/cta.png") no-repeat center center/cover;
+  position: relative;
+  height: 700px;
+  text-align: center;
+  padding: 200px 0;
+  color: white;
+  opacity: 60%;
+}
+
+.cta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  filter: blur(80px);
+  z-index: 0;
+}
+
+.cta-content {
+  position: relative;
+  z-index: 1;
+}
+
+.cta h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.cta p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.cta form {
+  display: inline-block;
+}
+
+.cta input[type="email"] {
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px;
+  width: 250px;
+}
+
+.cta button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--primary-color);
+  color: white;
+  cursor: pointer;
+  opacity: 1;
+}
+
+.cta button:hover {
+  opacity: 0.7;
+}
+
+/* Footer */
+footer {
+  background-color: #ecb177;
+  padding: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.footer-content p {
+  margin: 0;
+  color: #333;
+}
+
+.footer-content ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.footer-content ul li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.footer-content ul li a {
+  text-decoration: none;
+  color: #ff8a00;
+  font-weight: bold;
+}
