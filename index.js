@@ -82,7 +82,7 @@ handleTags();
 
 // handle showprogram
 function btnRun() {
-  const rows = JSON.parse(localStorage.getItem("arrRowInfo"));
+  const rows = JSON.parse(localStorage.getItem("arrRowInfo")) || [];
   let arrRowShow = "";
 
   if (type == "format") {
@@ -102,7 +102,7 @@ function btnRun() {
     Prism.highlightElement(code);
   } else if (type == "image") {
     // render program
-    let rowsImgs = JSON.parse(localStorage.getItem("arrRowImgs"));
+    let rowsImgs = JSON.parse(localStorage.getItem("arrRowImgs")) || [];
 
     rowsImgs.forEach((row) => {
       const rowShow = `<img src="${row.urlImage}" alt="image" style="width: ${row.width}px; height: ${row.height}px;">\t`;
