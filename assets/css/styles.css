@@ -139,9 +139,6 @@
   color: #fff;
 }
 
-.wrap-list::-webkit-scrollbar {
-  display: none;
-}
 .wrap__row {
   background-color: var(--primary-color);
   margin: 10px 0;

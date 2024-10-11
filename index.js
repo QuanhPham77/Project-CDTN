@@ -123,6 +123,7 @@ function btnRun() {
     let resultHTML = "";
 
     elements.forEach((el) => {
+      // show program table
       const table = el.querySelector("table");
       let tableResult = `<table border="1" style="table-layout: fixed; width: 100%;margin-bottom: 20px;">\n`;
 
@@ -140,6 +141,30 @@ function btnRun() {
     });
 
     showProgram.innerHTML = resultHTML;
+
+    // show code table
+    const els = container.querySelectorAll(".element");
+    let htmlCode = "";
+
+    els.forEach((el) => {
+      const table = el.querySelector("table");
+      let tableCode = `<table border="1" style="table-layout: fixed; width: 100%;">\n`;
+
+      for (let i = 0; i < table.rows.length; i++) {
+        tableCode += "  <tr>\n";
+        for (let j = 0; j < table.rows[i].cells.length; j++) {
+          const cellInput = table.rows[i].cells[j].querySelector("input");
+          const cellContent = cellInput ? cellInput.value : "";
+          tableCode += `\t<td>${cellContent}</td>\n`;
+        }
+        tableCode += "  </tr>\n";
+      }
+      tableCode += "</table>\n";
+      htmlCode += tableCode;
+    });
+
+    code.textContent = htmlCode;
+    Prism.highlightElement(code);
   }
 }
 

@@ -6,7 +6,7 @@ function handleTable(e) {
   newTable.innerHTML = `
         <div id="tableContainer">
             <table id="dynamicTable">
-                <tr>
+                <tr style="background: #ccc;">
                     <td><input type="text"></td>
                     <td><input type="text"></td>
                 </tr>
@@ -31,7 +31,7 @@ function handleTable(e) {
       newCell.innerHTML = '<input type="text">';
     }
 
-    updateCode();
+    // updateCode();
     scrollToBottom();
   });
 
@@ -43,33 +43,11 @@ function handleTable(e) {
       newCell.innerHTML = '<input type="text">';
     }
 
-    updateCode();
+    // updateCode();
     scrollToBottom();
   });
 }
 
-function scrollToBottom() {}
-
-function updateCode() {
-  const elements = container.querySelectorAll(".element");
-  let htmlCode = "";
-
-  elements.forEach((el) => {
-    const table = el.querySelector("table");
-    let tableCode = `<table border="1" style="table-layout: fixed; width: 100%;">\n`;
-
-    for (let i = 0; i < table.rows.length; i++) {
-      tableCode += "  <tr>\n";
-      for (let j = 0; j < table.rows[i].cells.length; j++) {
-        const cellInput = table.rows[i].cells[j].querySelector("input");
-        const cellContent = cellInput ? cellInput.value : "";
-        tableCode += `<td>${cellContent}</td>\n`;
-      }
-      tableCode += "  </tr>\n";
-    }
-    tableCode += "</table>\n";
-    htmlCode += tableCode;
-  });
-
-  code.textContent = htmlCode;
+function scrollToBottom() {
+  container.scrollTop = container.scrollHeight;
 }
