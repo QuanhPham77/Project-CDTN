@@ -4,7 +4,7 @@ const rows = $$(".wrap__row");
 function handleImage(e) {
   const contentRow = `
       <div class="wrap__row" data-id="${countImg}">
-        <p class="wrap__row-img-text">&lt;img&gt;</p>
+        <div class="wrap__row-img-text">&lt;img&gt;</div>
         <div class="wrap__row-mid">
             <input type="file" accept="image/*" class="wrap__row-file" data-id="${countImg}"/>
 

@@ -161,6 +161,7 @@ li {
 }
 
 .box__move {
+  width: 100%;
   height: 350px;
   background-color: var(--bgr-color);
   padding: 20px 32px;
@@ -186,6 +187,7 @@ li {
 /*box move*/
 
 .wrap-list {
+  width: 100%;
   height: 90%;
   overflow: auto;
   color: #fff;
@@ -203,6 +205,7 @@ li {
   position: relative;
   padding-left: 32px;
   width: 100%;
+  height: 60px;
 }
 
 .wrap__row-text,
@@ -212,7 +215,9 @@ li {
 }
 
 .wrap__row-img-text {
-  width: 20%;
+  width: 50px;
+  position: absolute;
+  left: 32px;
 }
 
 .wrap__row-content,
@@ -225,9 +230,8 @@ li {
 .wrap__row-mid {
   display: flex;
   align-items: center;
-  width: 33.33%;
-  padding: 12px 0;
-  /* margin-left: 250px; */
+  position: absolute;
+  right: 250px;
 }
 
 .wrap__row-input {
@@ -241,19 +245,19 @@ li {
 }
 
 .wrap__row-delete {
-  width: 73px;
-  height: 100%;
-  background-color: #000;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  cursor: pointer;
   position: absolute;
   right: 0;
+  width: 73px;
+  height: 100%;
   margin-left: 75px;
+  background-color: #000;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
   transition: all 0.5s ease;
+  cursor: pointer;
 }
 
 .wrap__row-delete:hover {
@@ -279,8 +283,7 @@ li {
 
 /* show program */
 .show-program {
-  margin-top: 8px;
-  margin: 0 32px;
+  margin: 8px 32px 32px 32px;
   width: 100wh;
   height: 470px;
   background-color: var(--bgr-color);
@@ -294,8 +297,3 @@ li {
   width: 100%;
   height: 280px;
 }
-
-/* .show-program {
-  border-radius: 20px;
-  width: 100%;
-} */

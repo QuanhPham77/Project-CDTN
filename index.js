@@ -57,7 +57,7 @@ function handleTags() {
       container.innerHTML = "";
       showProgram.innerHTML = "";
       code.innerHTML = "";
-      localStorage.removeItem("arrRowInfo");
+      localStorage.clear();
 
       $(".navbar__item.active").classList.remove("active");
       $(".tab-pane.active").classList.remove("active");
@@ -153,5 +153,4 @@ function clearAll() {
 //xoa DL trong local khi load lai trang
 window.onload = function () {
   localStorage.clear();
-  currentId = 0;
 };
